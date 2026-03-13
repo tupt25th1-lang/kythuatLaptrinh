@@ -1,38 +1,38 @@
-#include < iostream>
-#include < vector>
-using namespace std;
-struct  sinhvien {
-	string hoten;
-	int tuoi;
-	bool gioitinh;
-	string diachi;
-
-
-};
-int main() {
-	sinhvien b;
-	b.hoten = " Nguyen van A ";
-	b.tuoi = 20;
-	b.gioitinh = true;
-	b.diachi = " Tay Ninh ";
-	
-	sinhvien c;
-	c.hoten = " Tran Thi B";
-	c.tuoi = 30;
-	 
-	vector <sinhvien> mang;
-	mang.push_back(b);
-	mang.push_back(c);
-	for (int i = 0; i < mang.size(); i++) {
-		cout << " sinh vien" << (i + 1) << endl;
-		cout << " \ t + Ho ten : " << mang[i].hoten << endl;
-		cout << " \ t+ Tuoi : " << mang[i].tuoi << endl;
-	}
-
-
-
-}
-
+//#include < iostream>
+//#include < vector>
+//using namespace std;
+//struct  sinhvien {
+//	string hoten;
+//	int tuoi;
+//	bool gioitinh;
+//	string diachi;
+//
+//
+//};
+//int main() {
+//	sinhvien b;
+//	b.hoten = " Nguyen van A ";
+//	b.tuoi = 20;
+//	b.gioitinh = true;
+//	b.diachi = " Tay Ninh ";
+//	
+//	sinhvien c;
+//	c.hoten = " Tran Thi B";
+//	c.tuoi = 30;
+//	 
+//	vector <sinhvien> mang;
+//	mang.push_back(b);
+//	mang.push_back(c);
+//	for (int i = 0; i < mang.size(); i++) {
+//		cout << " sinh vien" << (i + 1) << endl;
+//		cout << " \ t + Ho ten : " << mang[i].hoten << endl;
+//		cout << " \ t+ Tuoi : " << mang[i].tuoi << endl;
+//	}
+//
+//
+//
+//}
+//
 
 
 
