@@ -25,7 +25,7 @@ void addperson(vector < connguoi > P) {
 }
 void Addperson(vector < connguoi >& p, int id) {
 	for ( auto i = p )
-}
+} 
 int main() {
 	vector <  connguoi > list;
 	do {
