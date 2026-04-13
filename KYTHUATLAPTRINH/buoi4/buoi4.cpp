@@ -1,5 +1,6 @@
 #include <iostream>
 #include<string>
+#include<fstream>
 using namespace std;
 struct Author {
     int id;
@@ -101,6 +102,40 @@ struct LinkedList {
         }
         return false;
     }
+    Book* Find(string bookName) {
+        if (head == NULL) {
+            cout << "No book available" << endl;
+            return NULL;
+        }
+        Node* item = head;
+        while (item != NULL) {
+            if (item->data.name.find(bookName) != std::string::npos) {
+                return &(item->data);
+            }
+            item = item->next;
+        }
+        return NULL;
+    }
+    void Export(string filename) {
+        ofstream out(filename, ios::binary);
+        if (!out.is_open()) {
+            cout << "Cannot open file" << endl;
+            return;
+        }
+        Node* item = head;
+        while (item != NULL) {
+            out.write(reinterpret_cast<const char*>(&item->data.id), sizeof(item->data.id));
+            size_t namelength = item->data.name.size();
+            out.write(reinterpret_cast<const char*>(&namelength), sizeof(namelength));
+            out.write(item->data.name.c_str(), namelength);
+            out.write(reinterpret_cast<const char*>(&item->data.author.id), sizeof(item->data.author));
+            size_t authornamelength = item->data.author.name.size();
+            out.write(reinterpret_cast<const char*>(&authornamelength), sizeof(authornamelength));
+            out.write(item->data.author.name.c_str(), authornamelength);
+            item = item->next;
+        }
+        out.close();
+    }
 };
 
 int main()
@@ -154,11 +189,25 @@ int main()
             break;
         }
         case 5: {
-
+            string bookName;
+            cout << "Enter book`s name to find:";
+            cin.ignore();
+            getline(cin, bookName);
+            Book* res = books.Find(bookName);
+            if (res != NULL) {
+                cout << *res;
+            }
+            else {
+                cout << "No book with name:" << bookName << endl;
+            }
             break;
         }
         case 6: {
-
+            books.Export("25TH1.dla");
+            cout << "Export successfuly" << endl;
+            break;
+        }
+        case 7: {
             break;
         }
         case 0: {
@@ -173,4 +222,3 @@ int main()
     } while (true);
     return 0;
 }
-
